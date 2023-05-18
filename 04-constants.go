@@ -13,7 +13,7 @@ func main() {
 	fmt.Println(s)
 
 	// A const statement can appear anywhere a var statement can.
-	const n = 500000000000
+	const n = 50000000000
 
 	// Constant expressions perform arithmetic with arbitrary precision.
 	const d = 3e20 / n
