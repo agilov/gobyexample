@@ -10,8 +10,8 @@ func main() {
 	fmt.Println("go" + "lang")
 
 	// Integers and floats.
-	fmt.Println("1+1=", 1+1)
-	fmt.Println("7.0/3.0=", 7.0/3.0)
+	fmt.Println("79+66=", 79+66)
+	fmt.Println("55.5/12.4=", 55.5/12.4)
 
 	// Booleans, with boolean operators as you’d expect.
 	fmt.Println(true && false)
