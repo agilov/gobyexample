@@ -26,11 +26,11 @@ func main() {
 	// e.g. for var f string = "apple" in this case.
 	x := "banana"
 	fmt.Println(x)
-	
+
 	// What happens if I change variable value?
 	z := "apple"
 	fmt.Printf("%s - %p \n", z, &z)
-	
+
 	z = "wood"
 	fmt.Printf("%s - %p \n", z, &z)
 }
