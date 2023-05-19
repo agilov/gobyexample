@@ -10,8 +10,8 @@ func main() {
 	m := make(map[string]int)
 
 	// Set key/value pairs using typical name[key] = val syntax.
-	m["k1"] = 7
-	m["k2"] = 13
+	m["k1"] = 1_000_000
+	m["k2"] = 2_000_000
 
 	// Printing a map with e.g. fmt.Println will show all of its key/value pairs.
 	fmt.Println("map:", m)
@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("prs:", prs)
 
 	// You can also declare and initialize a new map in the same line with this syntax.
-	n := map[string]int{"foo": 1, "bar": 2}
+	n := map[string]int{"foo": 1, "bar": 3}
 	// Note that maps appear in the form map[k:v k:v] when printed with fmt.Println.
 	fmt.Println("map:", n)
 }
