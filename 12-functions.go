@@ -7,9 +7,6 @@ import "fmt"
 
 // Here's a function that takes two ints and returns their sum as an int.
 func plus(a int, b int) int {
-
-	// Go requires explicit returns,
-	// i.e. it won't automatically return the value of the last expression.
 	return a + b
 }
 
