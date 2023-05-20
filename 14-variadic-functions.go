@@ -7,13 +7,15 @@ import "fmt"
 // For example `fmt.Prinln` is a common variadic function.
 
 // Here's a function that will take an arbitrary number of `ints` as arguments.
-func sum(nums ...int) {
+func sum(nums ...int) int {
 	fmt.Print(nums, " ")
 	total := 0
-	for _, num := range nums {
-		total += num
+	for _, n := range nums {
+		total += n
 	}
 	fmt.Println(total)
+
+	return total
 }
 
 func main() {
@@ -23,8 +25,8 @@ func main() {
 
 	// If you already have multiple args in a slice,
 	// apply them to a variadic function using func(slice...) like this.
-	nums := []int{1, 2, 3, 4, 5}
-	sum(nums...)
+	//nums := []int{1, 2, 3, 4, 5}
+	sum([]int{123, 123, 1, 3, 4}...)
 }
 
 // Another key aspect of functions in Go is their ability to form closures,
