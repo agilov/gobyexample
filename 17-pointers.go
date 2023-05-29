@@ -10,6 +10,7 @@ import "fmt"
 // `zeroval` will get a copy of `ival` distinct from the on in the calling function.
 func zeroval(ival int) {
 	ival = 0
+	fmt.Println("from zeroval", &ival)
 }
 
 // `zeroptr` in contrast has an `*int` parameter, meaning that it takes an `int` pointer.
@@ -18,6 +19,7 @@ func zeroval(ival int) {
 // Assigning a value to a dereferenced pointer changes the value at the refrerenced address.
 func zeroptr(iptr *int) {
 	*iptr = 0
+	fmt.Println("From zeroptr", iptr)
 }
 
 func main() {
@@ -31,8 +33,12 @@ func main() {
 	zeroptr(&i)
 	fmt.Println("zptr:", i)
 
+	k := &i
+
 	// Pointers can be printed too
 	fmt.Println("ptr:", &i)
+
+	fmt.Println("ptr to ptr", k)
 
 	// `zeroval` doesn't change the `i` in `main`, but `zeroptr` does because it
 	// has memory address for that variable
