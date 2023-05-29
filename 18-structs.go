@@ -11,17 +11,29 @@ type person struct {
 	age  int
 }
 
+func anotherPerson(name string, age int) person {
+	p := person{age: age, name: name}
+	fmt.Printf("person by value: %p\n", &p)
+	return p
+}
+
 // `newPerson` constructs a new `person` with the given name
 func newPerson(name string) *person {
 	p := person{name: name}
 	p.age = 42
-
+	fmt.Printf("person by pointer: %p\n", &p)
 	// You can safely return a pointer to local variable
 	// as a local variable will survive the scope of the function.
 	return &p
 }
 
 func main() {
+
+	pv := anotherPerson("Roman", 33)
+	fmt.Printf("Person after by value: %p\n", &pv)
+
+	pp := newPerson("Jopka")
+	fmt.Printf("Person after by pointer: %p\n", pp)
 
 	// This syntax creates a new struct.
 	fmt.Println(person{"Roman", 30})
@@ -49,7 +61,9 @@ func main() {
 	// But manual dereferencing is also possible.
 	fmt.Println((*sp).age)
 
-	// Structs are mutable
+	// Structs are mutable and memory address remains the same after update (value overwritten)
+	fmt.Printf("Age before mutation: %p\n", &sp.age)
 	sp.age = 61
+	fmt.Printf("Age after mutation: %p\n", &sp.age)
 	fmt.Println(sp.age)
 }
