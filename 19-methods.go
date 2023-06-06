@@ -20,7 +20,7 @@ func (r rect) perim() int {
 }
 
 // This method wont mutate actual struct because struct will be copied to receive this method
-// Instad it returns the copy with mutated value.
+// Instead it returns the copy with mutated value.
 func (r rect) SetWidth(w int) rect {
 	r.width = w
 	return r
@@ -31,7 +31,20 @@ func (r *rect) MutateWidth(w int) {
 	r.width = w
 }
 
+type me struct {
+	weight int
+}
+
+func (me *me) getFat(kg int) {
+	me.weight += kg
+}
+func (me me) getMoreFat(kg int) me {
+	me.weight += kg
+	return me
+}
+
 func main() {
+
 	r := rect{width: 10, height: 11}
 	fmt.Println("rect:", r)
 
@@ -56,6 +69,12 @@ func main() {
 	fmt.Println("before mutate:", r)
 	r.MutateWidth(5)
 	fmt.Println("mutated:", r)
+
+	me := me{weight: 10}
+	me.getFat(20)
+	k := me.getMoreFat(20)
+	fmt.Println("me:", me)
+	fmt.Println("k:", k)
 }
 
 // Next we'll look at Go's mechanism for grouping and
