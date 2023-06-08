@@ -6,6 +6,7 @@ import (
 )
 
 // *Interfaces* are named collections of method signatures
+// read more: https://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go
 
 // Here's a basic interface for geometric chapes
 type geometry interface {
