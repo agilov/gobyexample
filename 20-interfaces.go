@@ -13,7 +13,7 @@ type geometry interface {
 	perim() float64
 }
 
-// For our example we'll implemeth this interface on `rect` and `circle` types
+// For our example we'll implemet this interface on `rect` and `circle` types
 type rect struct {
 	width, height float64
 }
@@ -22,21 +22,35 @@ type circle struct {
 	radius float64
 }
 
+type square struct {
+	width float64
+}
+
 // To implement an interface in Go, we just need to implement all the methods in the interface.
 // Here we implement geometry on rects.
 func (r rect) area() float64 {
 	return r.width * r.height
 }
+
 func (r rect) perim() float64 {
 	return 2*r.width + 2*r.height
 }
 
 // The implementation for circles.
 func (c circle) area() float64 {
-	return math.Pi * c.radius * c.radius
+	return math.Pi * math.Pow(c.radius, 2)
 }
+
 func (c circle) perim() float64 {
 	return 2 * math.Pi * c.radius
+}
+
+func (s *square) area() float64 {
+	return math.Pow(s.width, 2)
+}
+
+func (s *square) perim() float64 {
+	return 4 * s.width
 }
 
 // If a variable has an interface type, then we can call all methods
@@ -48,13 +62,21 @@ func measure(g geometry) {
 	fmt.Println(g.perim())
 }
 
+func measurePointer(gp geometry) {
+	fmt.Println(gp)
+	fmt.Println("measurePointer area", gp.area())
+	fmt.Println("measurePointer perim", gp.perim())
+}
+
 func main() {
 	c := circle{radius: 10}
+	s := square{width: 5}
 	r := rect{width: 12, height: 12}
 
 	// The circle and rect struct types both implement the geometry interface
 	// so we can use instances of these structs as arguments to measure.
 	measure(c)
+	measurePointer(&s)
 	measure(r)
 }
 
